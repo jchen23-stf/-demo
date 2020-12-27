@@ -564,3 +564,6 @@
 		<script>var specialChars = document.querySelectorAll("span.char"); for(var c=0; c<specialChars.length; c++){ specialChars[c].innerHTML = decodeURIComponent(specialChars[c].innerHTML); }</script>
 	</body>
 </html>
+
+AMap.plugin(["AMap.StationSearch"], function() { //实例化公交站点查询类 var station = new AMap.StationSearch({ pageIndex: 1, //页码，默认值为1 pageSize: 10, //单页显示结果条数，默认值为20，最大值为50 city: '021' //限定查询城市，可以是城市名（中文/中文全拼）、城市编码，默认值为『全国』 }); //执行关键字查询 station.search('上海火车站', function(status, result) { //打印状态信息status和结果信息result //status：complete 表示查询成功，no_data 为查询无结果，error 代表查询错误。 console.log(status, result); }); });
+AMap.plugin(["AMap.LineSearch"], function() { //实例化公交线路查询类 var linesearch = new AMap.LineSearch({ pageIndex: 1, //页码，默认值为1 pageSize: 1, //单页显示结果条数，默认值为20，最大值为50 city: "上海", //限定查询城市，可以是城市名（中文/中文全拼）、城市编码，默认值为『全国』 extensions: "all" //是否返回公交线路详细信息，默认值为『base』 }); //执行公交路线关键字查询 linesearch.search('536', function(status, result) { //打印状态信息status和结果信息result console.log(status, result); }); });
